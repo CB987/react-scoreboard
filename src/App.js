@@ -62,29 +62,41 @@ class App extends Component {
   //       }
   //     }
   //   })
+  // and call this.setState to rerender 
   //   
 //version 2: .map, use shorthand to copy values out of the original
+// _incrementScoreById(id) {
+//   //find the player in this.state.scores
+//   //increment their score
+//   const newScores = this.state.scores.map(bruce => {
+//     if (bruce.id !== id) {
+//       return bruce;
+//     } else {
+//       return {
+//         ...bruce, 
+//         score: bruce.score + 1
+//       };
+//     }
+//   });
+// and call this.setState to rerender 
+
+// version 3: .map, object copy + ternary + implicit return
+//using shorthand to copy values out of the original score
 _incrementScoreById(id) {
   //find the player in this.state.scores
   //increment their score
-  const newScores = this.state.scores.map(bruce => {
-    if (bruce.id !== id) {
-      return bruce;
-    } else {
-      return {
-        ...bruce, 
-        score: bruce.score + 1
-      };
-    }
-  });
+  const newScores = this.state.scores.map(bob => {
+    return bob.id !== id ? bob: { ...bob, score: bob.score+1}
+  })
+
   // and call this.setState to rerender 
     this.setState({
       scores: newScores
     })
-    console.log('hellooooo');
+    // console.log('hellooooo');
+  
   }
 }
-
 
 
 export default App;
