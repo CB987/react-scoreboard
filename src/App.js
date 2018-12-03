@@ -35,6 +35,17 @@ class App extends Component {
       </div>
     );
   }
+
+  _scoresAsCards() {
+    const cards = this.state.scores.map(score => {
+      return (
+        <div key={score.id}>
+          <h2>name: {score.name} // score: {score.score}</h2>
+        </div>
+      );
+    });
+    return cards
+  }
 }
 
 export default App;
